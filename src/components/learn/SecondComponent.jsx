@@ -6,4 +6,12 @@ const SecondComponent = () => {
     )
 }
 
-export default SecondComponent;
+const ThirdComponent = () => {
+    return (
+        <div>
+            Third Component
+        </div>
+    )
+}
+
+export { SecondComponent, ThirdComponent };
