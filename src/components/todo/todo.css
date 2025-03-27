@@ -1,0 +1,82 @@
+.todo-container {
+    margin: 50px auto;
+    width: 600px;
+}
+
+.todo-title {
+    font-size: 20px;
+    color: rgba(228, 192, 9, 0.756);
+    text-align: center;
+}
+
+.todo-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.todo-input {
+    width: 60%;
+    height: 30px;
+}
+
+.todo-input:focus {
+    outline: 0.5px solid gray;
+}
+
+.todo-button {
+    height: 30px;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+
+.todo-list {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.todo-image {
+    text-align: center;
+}
+
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .logo {
+        animation: logo-spin infinite 20s linear;
+    }
+}
