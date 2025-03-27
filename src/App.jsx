@@ -2,19 +2,36 @@ import './components/todo/todo.css';
 import TodoNew from './components/todo/TodoNew';
 import TodoData from './components/todo/TodoData';
 import reactLogo from './assets/react.svg'
+import { useState } from 'react';
 
 
 const App = () => {
 
-  const myVariable = "Thế Anh";
-  const age = 20;
-  const data = {
-    address: "TP Hồ Chí Minh",
-    country: "Việt Nam"
-  }
+  const [todoList, setTodoList] = useState([
+    // { id: 1, name: "Learning React" },
+    // { id: 2, name: "Watching React" },
+  ])
 
   const addNewTodo = (name) => {
-    alert(`Call me ${name}`);
+    // alert(`Call me ${name}`);
+    const newTodo = {
+      id: randomIntFromInterval(1, 1000000),
+      name: name
+    }
+
+    //Add toDoList
+    setTodoList([...todoList, newTodo]);
+  }
+
+  const randomIntFromInterval = (min, max) => { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  const deleteTodo = (id) => {
+    const newTodo = todoList.filter(item => item.id !== id);
+    setTodoList(newTodo);
+    // console.log(id);
+
   }
 
   // {key:value}
@@ -26,15 +43,32 @@ const App = () => {
         <TodoNew
           addNewTodo={addNewTodo}
         />
-        <TodoData
-          name={myVariable}
-          age={age}
-          data={data}
-        />
 
-        <div className="todo-image">
-          <img src={reactLogo} className='logo' />
-        </div>
+        {todoList.length > 0 ?
+          < TodoData
+            todoList={todoList}
+            deleteTodo={deleteTodo}
+          />
+          :
+          <div className="todo-image">
+            <img src={reactLogo} className='logo' />
+          </div>
+        }
+
+        {/*         
+        {todoList.length > 0 &&
+          < TodoData
+            todoList={todoList}
+          />
+        }
+
+        {todoList.length === 0 &&
+          <>
+            <div className="todo-image">
+              <img src={reactLogo} className='logo' />
+            </div>
+          </>
+        } */}
       </div>
     </>
   )

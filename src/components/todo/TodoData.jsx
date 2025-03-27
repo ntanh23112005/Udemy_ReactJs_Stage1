@@ -7,24 +7,24 @@ const TodoData = (props) => {
     //     data: {}
     // }
 
-    // method 1 (Advise)
-    const { name, age, data } = props;
+    //(Advise)
+    const { todoList, deleteTodo } = props;
 
-    // method 2 (No Advise)
-    // const name = props.name;
-    // const age = props.age;
-    // const data = props.data;
-
-    //method 3 (No advise)
-    // const TodoData= ({name}) => {}
-    console.log(">>> Check props: ", props);
-
+    const handleOnDelete = (id) => {
+        deleteTodo(id)
+        // alert(id)
+    }
     return (
         <>
             <div className='todo-list'>
-                <div>My name is {name}</div>
-                <div>Learning react</div>
-                <div>Watching react</div>
+                {todoList.map((item, index) => {
+                    console.log(">>> check map ", item, index);
+                    return (
+                        <div className={`todo-item ${index}`} key={index}>
+                            <div>{item.name}</div>
+                            <button onClick={() => handleOnDelete(item.id)}>Delete</button>
+                        </div>)
+                })}
             </div>
         </>
     )
